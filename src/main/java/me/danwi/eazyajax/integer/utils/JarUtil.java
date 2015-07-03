@@ -66,7 +66,7 @@ public class JarUtil {
             } else {
                 String childFilePath = childFile.getPath();
                 if (childFilePath.endsWith(".class")) {
-                    childFilePath = childFilePath.replace(TomcatHelper.classesPath + File.separator, "");
+                    childFilePath = childFilePath.replace(TomcatHelper.classesPath, "");
                     childFilePath = childFilePath.replace(File.separator, ".");
                     childFilePath = childFilePath.replace(".class", "");
                     myClassName.add(childFilePath);
