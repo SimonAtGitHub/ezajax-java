@@ -1,0 +1,25 @@
+//设置build目录
+buildDir = file(rootDir.path + '/build/core')
+
+buildscript {
+    ext.kotlin_version = '1.0.4'
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.0.4"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'kotlin'
+
+sourceSets {
+    main.kotlin.srcDirs += 'src/main/kotlin'
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compileOnly 'javax.servlet:javax.servlet-api:3.0.1'
+}

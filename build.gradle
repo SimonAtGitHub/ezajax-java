@@ -1,0 +1,8 @@
+//设置build目录
+buildDir = file(rootDir.path + '/build/root')
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}

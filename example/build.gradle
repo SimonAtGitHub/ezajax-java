@@ -1,0 +1,17 @@
+//设置build目录
+buildDir = file(rootDir.path + '/build/example')
+
+apply plugin: 'war'
+
+sourceSets {
+    main.java.srcDirs += 'src'
+}
+
+war {
+    webAppDirName = 'web'
+}
+
+dependencies {
+    compile project(':core')
+    compileOnly 'javax.servlet:javax.servlet-api:3.0.1'
+}
