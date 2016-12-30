@@ -2,13 +2,13 @@
 buildDir = file(rootDir.path + '/build/core')
 
 buildscript {
-    ext.kotlin_version = '1.0.4'
+    ext.kotlin_version = '1.0.6'
     repositories {
         mavenCentral()
     }
 
     dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.0.4"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
@@ -16,7 +16,7 @@ apply plugin: 'java'
 apply plugin: 'kotlin'
 
 sourceSets {
-    main.kotlin.srcDirs += 'src/main/kotlin'
+    main.kotlin.srcDirs += 'src'
 }
 
 dependencies {
