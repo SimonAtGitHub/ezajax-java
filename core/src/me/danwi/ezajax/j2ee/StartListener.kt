@@ -1,5 +1,6 @@
-package me.danwi.ezajax
+package me.danwi.ezajax.j2ee
 
+import me.danwi.ezajax.container.loadAllClasses
 import javax.servlet.ServletContextEvent
 import javax.servlet.ServletContextListener
 import javax.servlet.annotation.WebListener
@@ -11,10 +12,9 @@ import javax.servlet.annotation.WebListener
 @WebListener
 class StartListener : ServletContextListener {
     override fun contextInitialized(sce: ServletContextEvent?) {
-        println("start")
+        //启动就开始加载所有的类
+        loadAllClasses()
     }
 
-    override fun contextDestroyed(sce: ServletContextEvent?) {
-        println("end")
-    }
+    override fun contextDestroyed(sce: ServletContextEvent?) {}
 }

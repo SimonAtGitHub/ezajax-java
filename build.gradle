@@ -4,5 +4,6 @@ buildDir = file(rootDir.path + '/build/root')
 allprojects {
     repositories {
         mavenCentral()
+        maven { url 'https://jitpack.io' }
     }
 }
