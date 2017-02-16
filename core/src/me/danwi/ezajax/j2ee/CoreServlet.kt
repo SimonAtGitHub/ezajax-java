@@ -34,6 +34,7 @@ class CoreServlet : HttpServlet() {
                 if (!it()) return
             } catch (e: EzError) {
                 resp.error(e.code, e.message)
+                return
             } catch (e: Exception) {
                 resp.error(-1, e.toString())
                 return
