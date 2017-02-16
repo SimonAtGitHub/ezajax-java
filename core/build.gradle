@@ -4,16 +4,20 @@ buildDir = file(rootDir.path + '/build/core')
 buildscript {
     ext.kotlin_version = '1.0.6'
     repositories {
+        jcenter()
         mavenCentral()
     }
 
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'kotlin'
+apply plugin: 'maven'
+apply plugin: 'com.jfrog.bintray'
 
 sourceSets {
     main.kotlin.srcDirs += 'src'
@@ -26,4 +30,25 @@ dependencies {
     compile "com.google.code.gson:gson:2.8.0"
     compile 'com.github.ikidou:TypeBuilder:1.0'
     compileOnly 'javax.servlet:javax.servlet-api:3.0.1'
+}
+
+group = "me.danwi.ezajax"
+
+install {
+    repositories.mavenInstaller {
+        pom.artifactId = 'core'
+    }
+}
+
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+    configurations = ['archives']
+    pkg {
+        repo = 'maven'
+        name = "ezajax"
+        vcsUrl = "https://github.com/ezajax/ezajax-java.git"
+        licenses = ["MIT"]
+        publish = true
+    }
 }

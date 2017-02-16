@@ -1,5 +1,8 @@
 language: java
 
+env:
+  secure: a7zZwOwJzNE3AFNTK+hs+xLldbwwSe014bXSYWcs0iifNevkOdpo8t0wu77KtfOd29BhOKCZj3jfJn24Hbg2PISZl52c8B+d+tcnOGB7IKt8PGCgb/86QHfn+NmlRSoHvKWInvdMjaO9daT7EV1pnBu1ra4mU4+i4M6CVwi75o8P27a50AuzFmIwzhIymNRv0RBUyc5TBZ6hrMcv19hwK+Bq13Le6Diny0BGl8XbXBakmrfEQAl0a8Z7ZtegOYPE0hNghv4i8PpL4TnW78ghvBb8RhDdVClaP3mVRPszvh8xPHSzysNH/hmFHJnE+M7VO7LZE+UbwhQDv5eLnmrv1sFcR0BNvgwXnvTJgbHfyo/h3KYcGKCSM+zWSf425cIzD8hCadeCNeYW5Zd6ZeIxCSV2/AzP1i/bGgg4pIWA5dCf4nJ4UIlO1/fx/BjzlRoVTknKlfxlFkLLLFiQMJClmu17yeLe7LnNC2j/JuTuonpJ7+vD9A9b4cS1tz4wI6s7Jy4wDwrfm2pHLBc4Yae9Pushq1LPrG4OD3iKxTDHiWVkC39qU3To8Rba6FDcxrNfEOhDO89l1BTNwN8++lnpylfR3znGmfqkLAoTpfZ0FYBSb1bpwtX06rMMZyPiDeeRKMRlYrwNoxdEdtIm5SmUwQSus8yqNODmhMQ0QZ4USA0=
+
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
@@ -17,3 +20,12 @@ cache:
 
 script:
   - gradle build
+
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: gradle bintrayUpload
+  on:
+    branch: master
+    tags: true
+    repo: ezajax/ezajax-java
