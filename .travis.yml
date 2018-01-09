@@ -7,24 +7,18 @@ before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 
-before_install:
-  - wget http://services.gradle.org/distributions/gradle-2.12-bin.zip
-  - unzip gradle-2.12-bin.zip
-  - export GRADLE_HOME=$PWD/gradle-2.12
-  - export PATH=$GRADLE_HOME/bin:$PATH
-
 cache:
   directories:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
 
 script:
-  - gradle build
+  - ./gradlew build
 
 deploy:
   skip_cleanup: true
   provider: script
-  script: gradle bintrayUpload
+  script: ./gradlew bintrayUpload
   on:
     branch: master
     tags: true
