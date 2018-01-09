@@ -6,5 +6,5 @@ allprojects {
         mavenCentral()
         maven { url 'https://jitpack.io' }
     }
-    version = '0.0.1'
+    version = '0.0.2'
 }

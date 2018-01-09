@@ -9,14 +9,12 @@ import java.util.*
  * Created by demon on 2017/2/14.
  */
 val JSON = GsonBuilder()
-        .registerTypeAdapter(Date::class.java, JsonDeserializer<Any> {
-            json, type, context ->
+        .registerTypeAdapter(Date::class.java, JsonDeserializer<Any> { json, _, _ ->
             val formatter = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
             formatter.timeZone = TimeZone.getTimeZone("UTC")
             formatter.parse(json.toString().replace("\"", ""))
         })
-        .registerTypeAdapter(Date::class.java, JsonSerializer<Any> {
-            src, type, content ->
+        .registerTypeAdapter(Date::class.java, JsonSerializer<Any> { src, _, _ ->
             val date = (src as Date)
             val formatter = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
             formatter.timeZone = TimeZone.getTimeZone("UTC")
